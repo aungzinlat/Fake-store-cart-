@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./public/img/icn.png" type="image/x-icon" />
+    <!-- Primary Meta Tags -->
+    <title>E-commerce Website</title>
+    <meta name="title" content="E-commerce Website" />
+    <meta name="description" content="Javascript project practice" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mms-it.com" />
+    <meta property="og:title" content="E-commerce Website" />
+    <meta property="og:description" content="Javascript project practice" />
+    <meta property="og:image" content="https://shorturl.at/BCDJL" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://mms-it.com" />
+    <meta property="twitter:title" content="E-commerce Website" />
+    <meta
+      property="twitter:description"
+      content="Javascript project practice"
+    />
+    <meta property="twitter:image" content="https://shorturl.at/BCDJL" />
+  </head>
+  <body>
+    <main id="app">
+      <header
+        class="w-full fixed left-0 right-0 z-50 md:w-4/5 px-3 md:px-0 mx-auto py-2 flex justify-between border-b-2 bg-white border-neutral-700"
+      >
+        <div class="brand font-heading">
+          <h3 class="font-bold font-heading text-2xl">MMS Solutions</h3>
+          <p class="font-bold text-neutral-400">E-commerce</p>
+        </div>
+        <div class="flex gap-3">
+          <!-- search -->
+
+          <input
+            type="text"
+            id="defaultSearch"
+            class="hidden p-3 text-sm text-white border border-neutral-700 rounded-lg bg-neutral-700 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Search Items..."
+          />
+
+          <button
+            id="searchBtn"
+            class="border border-neutral-700 px-3 py-2 text-neutral-700 "
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 stroke-neutral-700 stroke-1"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+              />
+            </svg>
+          </button>
+
+          <button
+            id="cartBtn"
+            class="animate__animated border px-3 py-2 bg-neutral-700 active:bg-neutral-500 relative"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 stroke-white stroke-1"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+              />
+            </svg>
+            <span
+              class="bg-red-500 w-6 h-6 rounded-full text-white text-xs flex justify-center items-center border-2 border-white absolute top-0 right-0 translate-x-1/2 -translate-y-1/2"
+              id="cartBtnCount"
+              >0</span
+            >
+          </button>
+        </div>
+      </header>
+      <div id="headerSpacer" class="h-24"></div>
+      <div class="w-full md:w-4/5 px-5 md:px-0 mx-auto">
+        <section class="mb-8">
+          <p class="text-lg mb-3 text-neutral-700">Product Categories</p>
+          <div
+            id="categoryLists"
+            class="flex max-w-full overflow-scroll gap-2 justify-stretch"
+          >
+            <button class="category-badge active">All</button>
+          </div>
+        </section>
+
+        <section
+          id="cartUi"
+          class="w-[380px] duration-200 translate-x-full h-screen bg-white fixed right-0 top-0 z-50 border-neutral-700 border-s-2"
+        >
+          <div class="h-full flex flex-col">
+            <div
+              class="cart-header px-3 py-2 flex justify-between border-b-2 bg-white border-neutral-700"
+            >
+              <div class="">
+                <h3 class="font-bold font-heading text-2xl">Shopping Cart</h3>
+                <p class="font-bold text-neutral-400">
+                  Your Items Count
+                  <span
+                    class="bg-red-500 px-2 py-1 rounded text-white text-xs"
+                    id="cartCount"
+                    >0</span
+                  >
+                </p>
+              </div>
+
+              <button id="closeCart" class="border border-neutral-700 p-3 active:bg-neutral-300">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6 stroke-neutral-700 stroke-1"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div
+              id="cartItems"
+              class="cart-items h-auto overflow-scroll flex-grow px-6 py-2"
+            >
+              <div
+                class="h-full hidden last:flex flex-col justify-center items-center"
+              >
+                <img class="w-3/4" src="./public/img/empty-cart.svg" alt="" />
+                <p>There is no item yet !</p>
+              </div>
+            </div>
+
+            <div
+              class="cart-footer sticky bottom-0 px-6 py-2 flex flex-col border-t-2 bg-white border-neutral-700"
+            >
+              <div class="mb-3 flex justify-between text-end">
+                <p class="text-neutral-400">Total Amount</p>
+                <p class="text-2xl">$ <span id="totalAmount">0</span></p>
+              </div>
+              <button id="orderNow" class="bg-neutral-700 text-white py-2">
+                Order Now
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="productSection"
+          class="mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+        ></section>
+
+        <footer
+          class="flex justify-between items-center p-3 bg-neutral-700 text-white"
+        >
+          <p>
+            Copyright &copy; 2023
+            <a class="underline" href="https://mms-it.com">MMS IT</a>
+          </p>
+          <a
+            href="#headerSpacer"
+            id="scrollToTop"
+            class="border border-white p-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"
+              />
+            </svg>
+          </a>
+        </footer>
+      </div>
+    </main>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
